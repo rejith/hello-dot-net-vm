@@ -1,0 +1,29 @@
+app:
+    name: iis
+    code: iis
+    notify: ssankar@ecloudcontrol.com
+
+build:
+    version: 2.9.31
+    env: DEV
+    build_file: none
+    output_files: output/*.zip
+    image_template: ansible-2.9
+
+deploy:
+    context: alpha/DEV
+    replicas: 1
+
+  
+properties:
+    revision : 1
+    APPZ_PLAYLIST: "iis"
+    IIS_HOSTNAME: 'localhost'
+    IIS_ZIP_FILE_NAME: 'IIS_Website'
+    IIS_REVISION: '1'
+    WINDOWSERVERIP: 'ec2-54-70-175-52.us-west-2.compute.amazonaws.com'
+    WINDOWUSER: 'Administrator'
+    PASSWORD: 
+      - vault: WINDOWSPASSWORD
+
+    
