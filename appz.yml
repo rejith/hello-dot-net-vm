@@ -19,7 +19,7 @@ properties:
     revision : 4
     APPZ_PLAYLIST: "iis"
     IIS_HOSTNAME: 'localhost'
-    IIS_ZIP_FILE_NAME: 'IIS_Website'
+    IIS_ZIP_FILE_NAME: 'IIS_Website-master'
     IIS_REVISION: '4'
     WINDOWSERVERIP: 'ec2-54-70-175-52.us-west-2.compute.amazonaws.com'
     WINDOWUSER: 'Administrator'
