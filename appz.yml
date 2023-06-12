@@ -1,7 +1,7 @@
 app:
     name: iis
     code: iis
-    notify: ssankar@ecloudcontrol.com
+    notify: jjpaul@ecloudcontrol.com
 
 build:
     version: 2.9.31
@@ -11,7 +11,7 @@ build:
     image_template: ansible-2.9
 
 deploy:
-    context: alpha/DEV
+    context: jojin77/DEV
     replicas: 1
 
   
@@ -24,6 +24,6 @@ properties:
     WINDOWSERVERIP: 'ec2-54-70-175-52.us-west-2.compute.amazonaws.com'
     WINDOWUSER: 'Administrator'
     PASSWORD: 
-      - vault: WINDOWSPASSWORD
+      vault: WINDOWSPASSWORD
 
     
