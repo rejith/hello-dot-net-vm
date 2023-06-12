@@ -23,6 +23,7 @@ properties:
     IIS_REVISION: '1'
     WINDOWSERVERIP: 'ec2-54-70-175-52.us-west-2.compute.amazonaws.com'
     WINDOWUSER: 'Administrator'
+    IIS_DEFAULT_PAGE: 'iisstart.aspx'
     PASSWORD: 
       vault: WINDOWSPASSWORD
 
