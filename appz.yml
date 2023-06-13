@@ -16,13 +16,13 @@ deploy:
 
   
 properties:
-    revision : 5
+    revision : 6
     APPZ_PLAYLIST: "iis"
     IIS_HOSTNAME: 'localhost'
     IIS_ZIP_FILE_NAME: 'IIS_Website'
-    IIS_REVISION: '5'
+    IIS_REVISION: '6'
     WINDOWSERVERIP: 'ec2-54-70-175-52.us-west-2.compute.amazonaws.com'
-    WINDOWUSER: 'Administrator'
+    WINDOWUSER: 'ansible'
     IIS_DEFAULT_PAGE: 'iisstart.aspx'
     PASSWORD: 
       vault: WINDOWSPASSWORD
