@@ -1,7 +1,7 @@
 app:
     name: HelloDotNetVM
     code: iis
-    notify: jjpaul@ecloudcontrol.com
+    notify: krishnan.rejith@gmail.com
 
 build:
     version: 2.9
