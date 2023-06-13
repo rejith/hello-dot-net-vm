@@ -19,7 +19,7 @@ properties:
     revision : 8
     APPZ_PLAYLIST: "iis"
     IIS_HOSTNAME: 'localhost'
-    IIS_REVISION: 'HEllo World 8'
+    IIS_REVISION: 'Hello World Version:8'
     WINDOWSERVERIP: 'hello-54-70-175-52.lowtouch.cloud'
     WINDOWUSER: 'ansible'
     IIS_DEFAULT_PAGE: 'iisstart.aspx'
