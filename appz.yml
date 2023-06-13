@@ -19,7 +19,7 @@ properties:
     revision : 6
     APPZ_PLAYLIST: "iis"
     IIS_HOSTNAME: 'localhost'
-    IIS_ZIP_FILE_NAME: 'IIS_Website'
+    IIS_ZIP_FILE_NAME: 'hello-dot-net-vm'
     IIS_REVISION: '7'
     WINDOWSERVERIP: 'ec2-54-70-175-52.us-west-2.compute.amazonaws.com'
     WINDOWUSER: 'ansible'
