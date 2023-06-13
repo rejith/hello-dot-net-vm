@@ -11,7 +11,7 @@ build:
     image_template: ansible-2.9
 
 deploy:
-    context: jojin77/DEV
+    context: rejith/DEV
     replicas: 1
 
   
