@@ -16,10 +16,10 @@ deploy:
 
   
 properties:
-    revision : 10
+    revision : 11
     APPZ_PLAYLIST: "iis"
     IIS_HOSTNAME: 'localhost'
-    IIS_REVISION: 'Hello World Version:9a'
+    IIS_REVISION: 'Hello World Version:9b'
     WINDOWSERVERIP: 'hello-54-70-175-52.lowtouch.cloud'
     WINDOWUSER: 'ansible'
     IIS_DEFAULT_PAGE: 'iisstart.aspx'
