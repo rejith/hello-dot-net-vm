@@ -1,7 +1,7 @@
 app:
-    name: HelloDotNetVM
+    name: iis
     code: iis
-    notify: krishnan.rejith@gmail.com
+    notify: jjpaul@ecloudcontrol.com
 
 build:
     version: 2.9
@@ -11,19 +11,18 @@ build:
     image_template: ansible-2.9
 
 deploy:
-    context: rejith/DEV
+    context: jojin77/DEV
     replicas: 1
 
   
 properties:
-    revision : 11
+    revision : 9
     APPZ_PLAYLIST: "iis"
     IIS_HOSTNAME: 'localhost'
-    IIS_REVISION: 'Hello World Version:9b'
+    nano: '2'
     WINDOWSERVERIP: 'hello-54-70-175-52.lowtouch.cloud'
     WINDOWUSER: 'ansible'
+    title: 'Hello.net'
     IIS_DEFAULT_PAGE: 'iisstart.aspx'
     PASSWORD: 
       vault: WINDOWSPASSWORD
-
-    
