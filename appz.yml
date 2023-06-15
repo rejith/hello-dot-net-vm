@@ -16,7 +16,7 @@ deploy:
 
   
 properties:
-    revision : 10
+    revision : 11
     APPZ_PLAYLIST: "iis"
     IIS_HOSTNAME: 'localhost'
     nano: '0'
