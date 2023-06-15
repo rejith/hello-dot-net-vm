@@ -19,10 +19,11 @@ properties:
     revision : 9
     APPZ_PLAYLIST: "iis"
     IIS_HOSTNAME: 'localhost'
-    nano: '2'
+    nano: '100'
     WINDOWSERVERIP: 'hello-54-70-175-52.lowtouch.cloud'
+    LOGCOLLECTOR_PORT: 30371
     WINDOWUSER: 'ansible'
-    title: 'Hello.net'
+    title: 'APPZ'
     IIS_DEFAULT_PAGE: 'iisstart.aspx'
     PASSWORD: 
       vault: WINDOWSPASSWORD
