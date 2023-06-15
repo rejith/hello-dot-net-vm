@@ -1,4 +1,8 @@
 <%@ Page Language="C#" %>
+<%@ Import Namespace="System" %>
+<%@ Import Namespace="System.Diagnostics" %>
+<%@ Import Namespace="System.Net" %>
+<%@ Import Namespace="System.IO" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,44 +24,44 @@
             float: left;
             width: 25%;
             padding: 10px;
-            height: 50px; /* Should be removed. Only for demonstration */
+            height: 50px;
         }
 
         .column-mid {
-            background-color:#3377ff;
+            background-color: #3377ff;
             float: left;
             width: 25%;
             padding: 10px;
-            height: 50px; /* Should be removed. Only for demonstration */
+            height: 50px;
         }
 
         .column-mid-white {
-            background-color:RoyalBlue;
+            background-color: RoyalBlue;
             color: white;
             float: left;
             width: 25%;
             padding: 10px;
-            height: 50px; /* Should be removed. Only for demonstration */
+            height: 50px;
         }
 
         .column-50 {
-            background-color:#f1f1f1;
+            background-color: #f1f1f1;
             float: left;
             width: 50%;
             padding: 10px;
-            height: 50px; /* Should be removed. Only for demonstration */
+            height: 50px;
         }
 
         .column-50-blue {
-            background-color:blue;
+            background-color: blue;
             float: left;
             width: 50%;
             padding: 10px;
-            height: 50px; /* Should be removed. Only for demonstration */
+            height: 50px;
         }
 
         .text-bk {
-            background-color:#3377ff;
+            background-color: #3377ff;
         }
 
         /* Clear floats after the columns */
@@ -73,14 +77,31 @@
             height: auto;
         }
 
+        /* Added styles for text visibility */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        span {
+            color: #333; /* Set desired text color */
+            margin: 10; /* Reset margins to avoid unwanted space */
+        }
+        
+        /* Updated styles for labels */
+        .column-mid-white label,
+        .column-mid-white span {
+            color: white;
+        }
     </style>
-
 </head>
 <body>
     <form id="form1" runat="server">
         <div class="row">
             <div>
-                <h1 style="color:#DAA520;"><center>AppZ Demo</center></h1>
+                <h1 style="color: #DAA520;"><center>AppZ Demo</center></h1>
                 <h2><center>Fully Automated Multi-Cloud Management Platform</center></h2>
             </div>
         </div>
@@ -93,7 +114,7 @@
                 <asp:Label runat="server" ID="app"></asp:Label>
             </div>
 
-            <div class="column-mid-white" style="text-align:right">
+            <div class="column-mid-white" style="text-align: right">
                 <asp:Label runat="server" ID="ver"></asp:Label>
             </div>
 
@@ -102,14 +123,13 @@
         </div>
 
         <div class="row">
-            <div class="column" style="height:100px">
+            <div class="column" style="height: 100px">
             </div>
 
-            <div class="column-50" style="text-align:center; height:100px">
-                <h1><asp:Literal runat="server" ID="time" /></h1>
-            </div>
-
-            <div class="column" style="height:100px">
+            <div class="column-50" style="text-align: center; height: 100px">
+   		<h1 style="width: 100%"><asp:Literal runat="server" ID="timeLiteral" /></h1>
+	    </div>
+            <div class="column" style="height: 100px">
             </div>
         </div>
 
@@ -121,7 +141,7 @@
                 <asp:Label runat="server" ID="ip"></asp:Label>
             </div>
 
-            <div class="column-mid-white" style="text-align:right">
+            <div class="column-mid-white" style="text-align: right">
                 <asp:Label runat="server" ID="nano"></asp:Label>
             </div>
 
@@ -132,9 +152,9 @@
         <div class="row">
             <div class="column">
             </div>
-            <div class="column-50" style="text-align:center; height:125px">
+            <div class="column-50" style="text-align: center; height: 125px">
                 <h3><center>Application Server</center></h3>
-                <h2 style="color:#3377ff;"><center>IIS </center></h2>
+                <h2 style="color: #3377ff;"><center><asp:Literal runat="server" ID="iisVersionLiteral" /></center></h2>
             </div>
             <div class="column">
             </div>
@@ -142,7 +162,11 @@
 
         <div class="row">
             <div>
-                <center><img src="https://raw.githubusercontent.com/rejith/tomcat-loadgen/master/WebContent/images/logo_v1.png" alt="CLOUDBOURNE" class="responsive" width="90px" style="margin:10px"></center>
+                <center>
+                    <img src="https://raw.githubusercontent.com/rejith/tomcat-loadgen/master/WebContent/images/logo_v1.png" 
+
+alt="CLOUDBOURNE" class="responsive" width="90px" style="margin: 10px">
+                </center>
             </div>
         </div>
 
@@ -153,10 +177,41 @@
                 {
                     title.Text = System.Environment.GetEnvironmentVariable("TITLE") ?? "";
                     app.Text = System.Environment.GetEnvironmentVariable("APP") ?? "";
-                    ver.Text = System.Environment.GetEnvironmentVariable("VER") ?? "";
-                    ip.Text = System.Environment.GetEnvironmentVariable("IP") ?? "";
-                    nano.Text = System.Environment.GetEnvironmentVariable("NANO") ?? "";
+                    ver.Text = "Version: " + (System.Environment.GetEnvironmentVariable("VER") ?? "");
+                    ip.Text = "IP: " + (GetIPv4Address());
+                    nano.Text = "NANO: " + (System.Environment.GetEnvironmentVariable("nano") ?? "");
+                    iisVersionLiteral.Text = GetIISVersion();
+		    UpdateTime();
                 }
+            }
+	    private void UpdateTime()
+	    {
+    		DateTime now = DateTime.Now;
+    		string timeString = now.ToString("HH:mm:ss");
+    		timeLiteral.Text = timeString;
+	    }
+            private string GetIPv4Address()
+            {
+                string hostName = Dns.GetHostName();
+                IPHostEntry hostEntry = Dns.GetHostEntry(hostName);
+
+                foreach (IPAddress address in hostEntry.AddressList)
+                {
+                    if (address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                    {
+                        return address.ToString();
+                    }
+                }
+
+                return "IPv4 address not found";
+            }
+            
+            private string GetIISVersion()
+            {
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.System);
+                string iisExePath = Path.Combine(path, "inetsrv", "w3wp.exe");
+                var versionInfo = FileVersionInfo.GetVersionInfo(iisExePath);
+                return versionInfo.FileVersion;
             }
         </script>
 
@@ -171,7 +226,7 @@
                     formatTimeComponent(minutes) + ":" +
                     formatTimeComponent(seconds);
 
-                document.getElementById('<%= time.ClientID %>').innerHTML = timeString;
+                document.getElementById('timeLiteral').textContent = timeString;
             }
 
             function formatTimeComponent(component) {
