@@ -19,7 +19,7 @@ properties:
     revision : 11
     APPZ_PLAYLIST: "iis"
     IIS_HOSTNAME: 'localhost'
-    nano: '100'
+    nano: '111'
     WINDOWSERVERIP: 'hello-54-70-175-52.lowtouch.cloud'
     LOGCOLLECTOR_PORT: 30371
     WINDOWUSER: 'ansible'
