@@ -16,10 +16,10 @@ deploy:
 
   
 properties:
-    revision : 9
+    revision : 10
     APPZ_PLAYLIST: "iis"
     IIS_HOSTNAME: 'localhost'
-    nano: '100'
+    nano: '0'
     WINDOWSERVERIP: 'hello-54-70-175-52.lowtouch.cloud'
     LOGCOLLECTOR_PORT: 30371
     WINDOWUSER: 'ansible'
