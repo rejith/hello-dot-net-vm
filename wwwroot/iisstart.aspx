@@ -36,7 +36,7 @@
         }
 
         .column-mid-white {
-            background-color: RoyalBlue;
+            background-color: <%=(System.Environment.GetEnvironmentVariable("COLOR") ?? "RoyalBlue") %>;
             color: white;
             float: left;
             width: 25%;
