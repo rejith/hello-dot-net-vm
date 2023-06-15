@@ -127,8 +127,8 @@
             </div>
 
             <div class="column-50" style="text-align: center; height: 100px">
-   		<h1 style="width: 100%"><asp:Literal runat="server" ID="timeLiteral" /></h1>
-	    </div>
+                <h1 style="width: 100%"><span id="timeLiteral"></span></h1>
+            </div>
             <div class="column" style="height: 100px">
             </div>
         </div>
@@ -163,57 +163,10 @@
         <div class="row">
             <div>
                 <center>
-                    <img src="https://raw.githubusercontent.com/rejith/tomcat-loadgen/master/WebContent/images/logo_v1.png" 
-
-alt="CLOUDBOURNE" class="responsive" width="90px" style="margin: 10px">
+                    <img src="https://raw.githubusercontent.com/rejith/tomcat-loadgen/master/WebContent/images/logo_v1.png" alt="CLOUDBOURNE" class="responsive" width="90px" style="margin: 10px">
                 </center>
             </div>
         </div>
-
-        <script runat="server">
-            protected void Page_Load(object sender, EventArgs e)
-            {
-                if (!IsPostBack)
-                {
-                    title.Text = System.Environment.GetEnvironmentVariable("TITLE") ?? "";
-                    app.Text = System.Environment.GetEnvironmentVariable("APP") ?? "";
-                    ver.Text = "Version: " + (System.Environment.GetEnvironmentVariable("VER") ?? "");
-                    ip.Text = "IP: " + (GetIPv4Address());
-                    nano.Text = "NANO: " + (System.Environment.GetEnvironmentVariable("nano") ?? "");
-                    iisVersionLiteral.Text = GetIISVersion();
-		    UpdateTime();
-                }
-            }
-	    private void UpdateTime()
-	    {
-    		DateTime now = DateTime.Now;
-    		string timeString = now.ToString("HH:mm:ss");
-    		timeLiteral.Text = timeString;
-	    }
-            private string GetIPv4Address()
-            {
-                string hostName = Dns.GetHostName();
-                IPHostEntry hostEntry = Dns.GetHostEntry(hostName);
-
-                foreach (IPAddress address in hostEntry.AddressList)
-                {
-                    if (address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
-                    {
-                        return address.ToString();
-                    }
-                }
-
-                return "IPv4 address not found";
-            }
-            
-            private string GetIISVersion()
-            {
-                string path = Environment.GetFolderPath(Environment.SpecialFolder.System);
-                string iisExePath = Path.Combine(path, "inetsrv", "w3wp.exe");
-                var versionInfo = FileVersionInfo.GetVersionInfo(iisExePath);
-                return versionInfo.FileVersion;
-            }
-        </script>
 
         <script type="text/javascript">
             function updateTime() {
@@ -234,6 +187,45 @@ alt="CLOUDBOURNE" class="responsive" width="90px" style="margin: 10px">
             }
 
             setInterval(updateTime, 1000);
+        </script>
+
+        <script runat="server">
+            protected void Page_Load(object sender, EventArgs e)
+            {
+                if (!IsPostBack)
+                {
+                    title.Text = System.Environment.GetEnvironmentVariable("TITLE") ?? "";
+                    app.Text = System.Environment.GetEnvironmentVariable("APP") ?? "";
+                    ver.Text = "Version: " + (System.Environment.GetEnvironmentVariable("VER") ?? "");
+                    ip.Text = "IP: " + (GetIPv4Address());
+                    nano.Text = "NANO: " + (System.Environment.GetEnvironmentVariable("NANO") ?? "");
+                    iisVersionLiteral.Text = GetIISVersion();
+                }
+            }
+
+            private string GetIPv4Address()
+            {
+                string hostName = Dns.GetHostName();
+                IPHostEntry hostEntry = Dns.GetHostEntry(hostName);
+
+                foreach (IPAddress address in hostEntry.AddressList)
+                {
+                    if (address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                    {
+                        return address.ToString();
+                    }
+                }
+
+                return "IPv4 address not found";
+            }
+
+            private string GetIISVersion()
+            {
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.System);
+                string iisExePath = Path.Combine(path, "inetsrv", "w3wp.exe");
+                var versionInfo = FileVersionInfo.GetVersionInfo(iisExePath);
+                return versionInfo.FileVersion;
+            }
         </script>
     </form>
 </body>
