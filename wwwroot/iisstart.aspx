@@ -220,12 +220,46 @@
             }
 
             private string GetIISVersion()
-            {
-                string path = Environment.GetFolderPath(Environment.SpecialFolder.System);
-                string iisExePath = Path.Combine(path, "inetsrv", "w3wp.exe");
-                var versionInfo = FileVersionInfo.GetVersionInfo(iisExePath);
-                return versionInfo.FileVersion;
-            }
+			{
+				string iisExePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "inetsrv", "w3wp.exe");
+				var versionInfo = FileVersionInfo.GetVersionInfo(iisExePath);
+
+				string iisVersion = "Microsoft-IIS/" + versionInfo.ProductMajorPart + "." + versionInfo.ProductMinorPart;
+
+				if (Environment.OSVersion.Version.Major == 5 && Environment.OSVersion.Version.Minor == 2)
+				{
+					iisVersion += " (Windows Server 2003)";
+				}
+				else if (Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor == 0)
+				{
+					iisVersion += " (Windows Server 2008)";
+				}
+				else if (Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor == 1)
+				{
+					iisVersion += " (Windows Server 2008 R2)";
+				}
+				else if (Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor == 2)
+				{
+					iisVersion += " (Windows Server 2012)";
+				}
+				else if (Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor == 3)
+				{
+					iisVersion += " (Windows Server 2012 R2)";
+				}
+				else if (Environment.OSVersion.Version.Major == 10 && Environment.OSVersion.Version.Minor == 0)
+				{
+					iisVersion += " (Windows Server 2016)";
+				}
+				else if (Environment.OSVersion.Version.Major == 10 && Environment.OSVersion.Version.Minor == 0 && Environment.OSVersion.Version.Build == 14393)
+				{
+					iisVersion += " (Windows Server 2016 Version 1607)";
+				}
+				// Add more conditions for other Windows Server versions if needed
+
+				return iisVersion;
+			}
+
+
         </script>
     </form>
 </body>
