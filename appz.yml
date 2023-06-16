@@ -24,7 +24,7 @@ properties:
     LOGCOLLECTOR_PORT: 30371
     WINDOWUSER: 'ansible'
     title: 'APPZ-APP! demo (PROD)'
-    COLOR: '#eb3434' 
+    COLOR: '#34eb34' 
     IIS_DEFAULT_PAGE: 'iisstart.aspx'
     PASSWORD: 
       vault: WINDOWSPASSWORD
