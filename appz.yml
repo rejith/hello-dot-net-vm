@@ -23,7 +23,7 @@ properties:
     WINDOWSERVERIP: 'hello-54-70-175-52.lowtouch.cloud'
     LOGCOLLECTOR_PORT: 30371
     WINDOWUSER: 'ansible'
-    title: 'APPZ.APP! (PROD)'
+    title: 'APPZ-APP! demo (PROD)'
     COLOR: 'Violet' 
     IIS_DEFAULT_PAGE: 'iisstart.aspx'
     PASSWORD: 
