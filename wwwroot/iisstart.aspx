@@ -154,7 +154,7 @@
             </div>
             <div class="column-50" style="text-align: center; height: 125px">
                 <h3><center>Application Server</center></h3>
-                <h2 style="color: #3377ff;"><center><asp:Literal runat="server" ID="iisVersionLiteral" /></center></h2>
+                <h4 style="color: #3377ff;"><center><asp:Literal runat="server" ID="iisVersionLiteral" /></center></h4>
             </div>
             <div class="column">
             </div>
