@@ -1,7 +1,7 @@
 app:
-    name: iis
+    name: HelloDotNetVM
     code: iis
-    notify: appz-delivery@ecloudcontrol.com
+    notify: krishnan.rejith@gmail.com
 
 build:
     version: 2.9
@@ -11,20 +11,21 @@ build:
     image_template: ansible-2.9
 
 deploy:
-    context: jojin77/DEV
+    context: rejith/DEV
     replicas: 1
 
   
 properties:
+    title: 'HELLO WORLD'
+    color: 'Teal' 
+    nano: '103'
     revision : 11
+  
     APPZ_PLAYLIST: "iis"
     IIS_HOSTNAME: 'localhost'
-    nano: '2023'
     WINDOWSERVERIP: 'hello-54-70-175-52.lowtouch.cloud'
     LOGCOLLECTOR_PORT: 30371
     WINDOWUSER: 'ansible'
-    title: 'APPZ-APP! demo (PROD)'
-    COLOR: 'Teal' 
     IIS_DEFAULT_PAGE: 'iisstart.aspx'
     PASSWORD: 
       vault: WINDOWSPASSWORD
