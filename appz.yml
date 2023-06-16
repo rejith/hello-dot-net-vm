@@ -16,9 +16,9 @@ deploy:
 
   
 properties:
-    title: 'HELLO WORLD - DEMO ON FRIDAY'
-    color: 'RoyalBlue' 
-    nano: '104'
+    title: 'HELLO WORLD - DEMO ON FRIDAY at 11'
+    color: 'Green' 
+    nano: '105'
     revision : 11
   
     APPZ_PLAYLIST: "iis"
