@@ -18,7 +18,7 @@ deploy:
 properties:
     title: 'HELLO WORLD - WEBINAR DEMO'
     color: 'RoyalBlue' 
-    nano: '108'
+    nano: '109'
     revision : 11
   
     APPZ_PLAYLIST: "iis"
